@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+
 @Mapper
 public interface UserRepository {
 
@@ -16,4 +17,10 @@ public interface UserRepository {
             RETURNING *
             """)
     User save(@Param("user") CreateUserDto createUserDto);
+
+
+    @Select("""
+            SELECT * FROM users WHERE email = #{email}
+            """)
+    User findByEmail(String email);
 }

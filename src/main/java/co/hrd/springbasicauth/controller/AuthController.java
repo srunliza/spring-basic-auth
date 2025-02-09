@@ -27,7 +27,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody CreateUserDto createUserDto) {
         UserDto userDto = userService.register(createUserDto);
-        return ResponseEntity.status(HttpStatus.CREATED ).body(
+        return ResponseEntity.status(HttpStatus.CREATED).body(
                 BaseRest.builder()
                         .message("User registered successfully")
                         .status(true)
